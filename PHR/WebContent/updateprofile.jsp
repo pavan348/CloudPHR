@@ -55,7 +55,7 @@
 								class="icon mr-2 d-flex justify-content-center align-items-center">
 								<span class="icon-paper-plane"></span>
 							</div>
-							<span class="text">Final Year Project Work</span>
+							<span class="text">XON LABS</span>
 						</div>
 					</div>
 				</div>
@@ -150,7 +150,7 @@
 								checked="checked" <%}%> name='gender' value='Female' /> Female
 							<br /> <br /> <label> Enter your Mobile number </label> <input
 								type=text class='form-control' name='mobile'
-								placeholder='Mobile number' value='<%=u1.getMobile()%>' /> <br />
+								placeholder='Mobile number' value='<%=u1.getMobile()%>' maxlength="10" pattern="[6789]{1}[0-9]{9}" title="9***,8***,7***" /> <br />
 							<label> Enter your Address </label>
 							<textarea class='form-control' name='addr' placeholder='Address'><%=u1.getAddr()%></textarea>
 							<br /> <br /> 

@@ -45,7 +45,7 @@
 								class="icon mr-2 d-flex justify-content-center align-items-center">
 								<span class="icon-paper-plane"></span>
 							</div>
-							<span class="text">Final Year Project Work</span>
+							<span class="text">XON LABS</span>
 						</div>
 						<div
 							class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right justify-content-end">
@@ -128,7 +128,7 @@
 									<br /> <input type="radio" name='gender' value='Male' /> Male
 									<input type="radio" name='gender' value='Female' /> Female <br />
 									<br /> <label>Mobile:</label> <input type="text" name="mobile"
-										class="form-control" /> <br /> <label>Address:</label>
+										class="form-control" maxlength="10" pattern="[6789]{1}[0-9]{9}" title="9***,8***,7***"/> <br /> <label>Address:</label>
 									<textarea name="addr" rows=3 class="form-control"></textarea>
 									<br />
 									<br />
