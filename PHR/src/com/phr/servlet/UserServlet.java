@@ -52,8 +52,8 @@ public class UserServlet extends HttpServlet
 				        	
 			       
 			        	  if(count>0){ 
-			        		resp.sendRedirect("register.jsp?msg=Email ID already exists in our database.");
-			        
+			        		resp.sendRedirect("register.jsp?msg= Email ID already exists in our database.");
+			       
 			        	}
 			        	  else {
 			     User user = new User();

@@ -77,7 +77,7 @@ public class PatientServlet extends HttpServlet {
 				} else if (type.equals("update")) {
 					Patient p = new Patient();
 					String dob = req.getParameter("dob");
-					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 					p.setDob(new Date(sdf.parse(dob).getTime()));
 					p.setDoctor(user.getEmail());
 					p.setEmail(req.getParameter("email"));

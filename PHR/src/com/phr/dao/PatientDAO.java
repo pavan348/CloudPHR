@@ -149,15 +149,16 @@ public class PatientDAO
       {
          con = DBConnection.connect();
          PreparedStatement ps = con.prepareStatement("update patients set email=?, fname=?, lname=?, mobile=?, dob=?, gender=? where patientid=? ");
-         ps.setString(8, model.getPatientId());
+         ps.setString(7, model.getPatientId());
          ps.setString(1, model.getEmail());
          ps.setString(2, model.getFname());
          ps.setString(3, model.getLname());
          ps.setString(4, model.getMobile());
          ps.setDate(5, model.getDob());
-         ps.setTimestamp(6, model.getEntry_time());
-         ps.setString(7, model.getGender());
+         ps.setString(6, model.getGender());
          ps.execute();
+         
+         
 
       }
       catch (Exception e)
