@@ -1,14 +1,17 @@
 package com.phr.servlet;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.phr.dao.UserDAO;
 import com.phr.model.User;
+import com.phr.util.DBConnection;
+import com.phr.dao.UserDAO;
 
 public class UserServlet extends HttpServlet
 {
@@ -22,9 +25,38 @@ public class UserServlet extends HttpServlet
 		try
 		{
 			String request_type = req.getParameter("request_type");
-			if (request_type.equals("register"))
-			{
-				User user = new User();
+		    int count =0;	
+			if (request_type.equals("register")) {
+				
+			
+				   Statement stmt = null;
+			      Connection con = null;
+			  
+			         con = DBConnection.connect();
+			     
+			         String cemail = req.getParameter("email");
+				         stmt = con.createStatement();
+				 
+				         String query = "select count(*) from USER where email ='"+cemail+"' ";
+				         
+				         ResultSet rs = stmt.executeQuery(query);
+				        
+				         rs.next();
+				          count = rs.getInt(1);
+			
+				         
+
+			        	 con.close();
+			        	 stmt.close();
+		         
+				        	
+			       
+			        	  if(count>0){ 
+			        		resp.sendRedirect("register.jsp?msg=Email ID already exists in our database.");
+			        
+			        	}
+			        	  else {
+			     User user = new User();
 				String addr = req.getParameter("addr");
 				user.setAddr(addr);
 				String email = req.getParameter("email");
@@ -43,6 +75,7 @@ public class UserServlet extends HttpServlet
 				if (role == null || role.trim().length() == 0)
 					role = "USER";
 				user.setRole(role);
+			
 
 				if ((addr == null || addr.trim().length() == 0) || (email == null || email.trim().length() == 0)
 						|| (fname == null || fname.trim().length() == 0)
@@ -55,12 +88,13 @@ public class UserServlet extends HttpServlet
 					resp.sendRedirect(
 							"register.jsp?msg=Error! All the fields are mandatory. Please provide the details.");
 				}
-				else
+				else 
 				{
 
 					dao.register(user);
 					resp.sendRedirect("register.jsp?msg=Registration Successful");
 				}
+			}
 			}
 			else if (request_type.equals("login"))
 			{
